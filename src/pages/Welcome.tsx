@@ -55,6 +55,18 @@ const tabs = [
         description: "Confirm all information is correct.",
         action: "Review",
       },
+      {
+        title: "Privacy Policy",
+        description: "Read how your data is collected and used.",
+        action: "Open",
+        route: "/privacy-policy",
+      },
+      {
+        title: "Terms & Conditions",
+        description: "Review the terms of use and service agreement.",
+        action: "Open",
+        route: "/terms-conditions",
+      },
     ],
   },
 ];
@@ -66,6 +78,16 @@ export default function Welcome() {
   const handleFinish = () => {
     localStorage.setItem("welcome_completed", "true");
     navigate("/");
+  };
+  //@ts-ignore
+  const handleItemClick = (item) => {
+    if (item.route) {
+      navigate(item.route);
+      return;
+    }
+
+    // fallback behavior for non-routed items
+    console.log("Clicked:", item.title);
   };
 
   const isLastTab = activeTab === tabs.length - 1;
@@ -146,7 +168,10 @@ export default function Welcome() {
                   </div>
 
                   {/* RIGHT ACTION */}
-                  <button className="px-4 py-2 rounded-full bg-green-100 text-green-700 text-sm font-medium hover:bg-green-200 transition">
+                  <button
+                    onClick={() => handleItemClick(item)}
+                    className="px-4 py-2 rounded-full bg-green-100 text-green-700 text-sm font-medium hover:bg-green-200 transition"
+                  >
                     {item.action}
                   </button>
                 </div>

@@ -13,6 +13,7 @@ import ErrorPage from "../pages/Error/Error";
 
 import Welcome from "../pages/Welcome.tsx";
 import PrivacyPolicy from "../pages/PrivacyPolicy.tsx";
+import TermsConditions from "../pages/TermsConditions.tsx";
 
 import { productRoutes } from "./product";
 
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
   {
     path: "/privacy-policy",
     element: <PrivacyPolicy />,
+  },
+  {
+    path: "/terms-conditions",
+    element: <TermsConditions />,
   },
 
   // Protected app routes
